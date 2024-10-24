@@ -145,10 +145,10 @@ public class PDFExtractorService {
 		if (user != null) {
 			List<Invoice> invoice = userService.retrieveDataByUserId(user.getId());
 			if (invoice != null && !invoice.isEmpty()) {
-				for (int i = 0; i < invoice.size(); i++) {
-					if (invoice.get(i).getUserId() == (user.getId())) {
+				for (Invoice inv : invoice) {
+					if (inv.getUserId() == (user.getId())) {
 						String uploadDir = "D:\\SpringTest\\CloudWebApplication\\src\\main\\resources\\uploads";
-						pdfFile = new File(uploadDir, invoice.get(i).getFileName());
+						pdfFile = new File(uploadDir, inv.getFileName());
 					}
 				}
 			}else 

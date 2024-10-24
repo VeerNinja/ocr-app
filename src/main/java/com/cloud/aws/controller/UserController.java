@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,7 +60,7 @@ public class UserController {
 		return ResponseEntity.status(401).body("Invalid credentials");
 	}
 
-	@GetMapping("/reset")
+	@PutMapping("/reset")
 	public ResponseEntity<Boolean> loginPwd(@PathVariable String emailid) {
 		boolean isValidUserpwd = userService.validateUserPwd(emailid);
 		if (isValidUserpwd) {
@@ -68,7 +69,7 @@ public class UserController {
 		return ResponseEntity.status(401).body(false);
 	}
 	
-	@PostMapping("/updaetuser")
+	@PutMapping("/updaetuser")
 	public ResponseEntity<Boolean> UpdateUser(@RequestBody User user) {
 		boolean isUser =false;
 		//user.setCreateDt(LocalDateTime.now());
